@@ -4,6 +4,7 @@ import { useColorScheme } from './hooks';
 require('./theme.css');
 
 import Vibing from './components/Vibing';
+import Sam from './components/Sam';
 
 const HotEggs: React.FC = () => {
   const colorScheme = useColorScheme();
@@ -18,13 +19,21 @@ const HotEggs: React.FC = () => {
     }
   }, [colorScheme]);
 
+  const onHover = () => {
+    const audio: any = document.getElementById("audio");
+    audio?.pause();
+    audio?.load();
+    audio?.play();
+  }
+
   const HENLO = "henlo twss :^)";
 
   return (<>
     <div style={{ padding: 30 }}>
       <span>{HENLO}</span>
     </div>
-    <Vibing style={{ position: 'absolute', bottom: 10, right: 10, borderRadius: 10 }} imgStyle={{ height: 70, width: 70, borderRadius: 10 }} />
+    <Sam />
+    <Vibing style={{ position: 'absolute', bottom: 10, right: 10, borderRadius: 10 }} imgStyle={{ height: 70, width: 70, borderRadius: 10 }} onHover={onHover} />
   </>);
 }
 
