@@ -20,7 +20,7 @@ const HotEggs: React.FC = () => {
   }, [colorScheme]);
 
   const onHover = () => {
-    const audio: any = document.getElementById("audio");
+    const audio = document.getElementById("audio") as HTMLAudioElement | null;
     audio?.pause();
     audio?.load();
     audio?.play();
