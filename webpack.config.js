@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   output: {
@@ -12,7 +13,7 @@ module.exports = {
     alias: {
       react: path.join(__dirname, 'node_modules', 'react'),
     },
-    extensions: ['.tsx','.ts','.js']
+    extensions: ['.tsx', '.ts', '.js']
   },
   module: {
     rules: [
@@ -51,6 +52,12 @@ module.exports = {
       template: './src/index.html',
       title: 'Caching'
     }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'src/assets', to: 'assets' },
+        { from: 'src/favicon', to: '' }
+      ]
+    })
   ],
   optimization: {
     runtimeChunk: 'single',
