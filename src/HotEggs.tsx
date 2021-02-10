@@ -39,15 +39,15 @@ const HotEggs: React.FC = () => {
 
   const HENLO = "henlo twss :^)";
 
-  return (<Router basename="/">
-    <div style={{ padding: 30 }}>
-      <span>{HENLO}</span>
-    </div>
+  return (<Router>
     <Switch>
       <Route path="/doom">
         <Doom />
       </Route>
       <Route path="/">
+        <div style={{ padding: 30 }}>
+          <span>{HENLO}</span>
+        </div>
         <div style={{ margin: 30 }}>
           <Link to="doom">PLAY DOOM</Link>
         </div>

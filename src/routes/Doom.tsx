@@ -28,7 +28,11 @@ const Doom: React.FC = () => {
     }
   }, [ref]);
 
-  return (<canvas ref={ref} />);
+  return (<>
+    <div style={{ position: 'fixed', top: 'calc(50% - 100px)', left: 'calc(50% - 160px)' }}>
+      <canvas ref={ref} />
+    </div>
+  </>);
 }
 
 export default Doom;
