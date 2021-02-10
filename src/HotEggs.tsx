@@ -1,10 +1,19 @@
 import React, { useLayoutEffect } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams
+} from 'react-router-dom';
 import { useColorScheme } from './hooks';
 
 require('./theme.css');
 
 import Vibing from './components/Vibing';
 import Sam from './components/Sam';
+import Doom from './routes/Doom';
 
 const HotEggs: React.FC = () => {
   const colorScheme = useColorScheme();
@@ -21,20 +30,32 @@ const HotEggs: React.FC = () => {
 
   const onHover = () => {
     const audio = document.getElementById("audio") as HTMLAudioElement | null;
-    audio?.pause();
-    audio?.load();
-    audio?.play();
+    if(audio) {
+      audio.pause();
+      audio.load();
+      audio.play();
+    }
   }
 
   const HENLO = "henlo twss :^)";
 
-  return (<>
+  return (<Router basename="/">
     <div style={{ padding: 30 }}>
       <span>{HENLO}</span>
     </div>
+    <Switch>
+      <Route path="/doom">
+        <Doom />
+      </Route>
+      <Route path="/">
+        <div style={{ margin: 30 }}>
+          <Link to="doom">PLAY DOOM</Link>
+        </div>
+      </Route>
+    </Switch>
     <Sam />
     <Vibing style={{ position: 'absolute', bottom: 10, right: 10, borderRadius: 10 }} imgStyle={{ height: 70, width: 70, borderRadius: 10 }} onHover={onHover} />
-  </>);
+  </Router>);
 }
 
 export default HotEggs;

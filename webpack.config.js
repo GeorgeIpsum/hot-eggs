@@ -3,6 +3,9 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
+const MODE = process.argv.find(arg => arg.indexOf('--mode=') > -1);
+const ENV = MODE ? MODE.split('=')[1] : 'development';
+
 module.exports = {
   output: {
     path: path.resolve(__dirname, 'build'),
