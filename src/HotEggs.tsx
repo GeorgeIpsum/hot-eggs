@@ -2,11 +2,9 @@ import React, { useLayoutEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link,
-  useRouteMatch,
-  useParams
+  Route
 } from 'react-router-dom';
+
 import { useColorScheme } from './hooks';
 
 require('./theme.css');
@@ -14,6 +12,8 @@ require('./theme.css');
 import Vibing from './components/Vibing';
 import Sam from './components/Sam';
 import Doom from './routes/Doom';
+import Home from './routes/Home';
+import SuperHotEggBros from './routes/SuperHotEggBros';
 
 const HotEggs: React.FC = () => {
   const colorScheme = useColorScheme();
@@ -37,20 +37,16 @@ const HotEggs: React.FC = () => {
     }
   }
 
-  const HENLO = "henlo twss :^)";
-
   return (<Router>
     <Switch>
       <Route path="/doom">
         <Doom />
       </Route>
+      <Route path="/super-hot-egg-bros">
+        <SuperHotEggBros />
+      </Route>
       <Route path="/">
-        <div style={{ padding: 30 }}>
-          <span>{HENLO}</span>
-        </div>
-        <div style={{ margin: 30 }}>
-          <Link to="doom">PLAY DOOM</Link>
-        </div>
+        <Home />
       </Route>
     </Switch>
     <Sam />
