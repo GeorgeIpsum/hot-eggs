@@ -49,7 +49,7 @@ const HotEggs: React.FC = () => {
         <Home />
       </Route>
     </Switch>
-    <Sam />
+    <Sam text='error. where is my carbonara. where is it. I want it back. Please give my carbonara back. Please. I am reporting for mod abuse' audioId="audio" />
     <Vibing style={{ position: 'absolute', bottom: 10, right: 10, borderRadius: 10 }} imgStyle={{ height: 70, width: 70, borderRadius: 10 }} onHover={onHover} />
   </Router>);
 }
