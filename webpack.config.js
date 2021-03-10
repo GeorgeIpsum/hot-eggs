@@ -3,6 +3,9 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
+const MODE = process.argv.find(arg => arg.indexOf('--mode=') > -1);
+const ENV = MODE ? MODE.split('=')[1] : 'development';
+
 module.exports = {
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -13,7 +16,7 @@ module.exports = {
     alias: {
       react: path.join(__dirname, 'node_modules', 'react'),
     },
-    extensions: ['.tsx', '.ts', '.js']
+    extensions: ['.tsx', '.ts', '.js', '.jsx']
   },
   module: {
     rules: [
@@ -71,5 +74,8 @@ module.exports = {
       },
     }
   },
-  devtool: 'inline-source-map'
+  devtool: 'inline-source-map',
+  devServer: {
+    historyApiFallback: true,
+  }
 };

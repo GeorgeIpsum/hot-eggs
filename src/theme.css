@@ -11,3 +11,19 @@ body.light {
   color: #23272A;
   background-color: #FFFFFF;
 }
+
+body.dark a {
+  color: #FFFFDF;
+}
+
+body.light a {
+  color: #23277A;
+}
+
+body.dark a:visited {
+  color: #FFFFAF;
+}
+
+body.light a:visited {
+  color: #2327AA;
+}

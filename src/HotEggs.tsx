@@ -1,10 +1,21 @@
 import React, { useLayoutEffect } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
+
 import { useColorScheme } from './hooks';
 
 require('./theme.css');
 
 import Vibing from './components/Vibing';
 import Sam from './components/Sam';
+import Doom from './routes/Doom';
+import Home from './routes/Home';
+import SuperHotEggBros from './routes/SuperHotEggBros';
+import SmtPF from './routes/SmtPF';
+import Gallery from './routes/Gallery';
 
 const HotEggs: React.FC = () => {
   const colorScheme = useColorScheme();
@@ -21,20 +32,34 @@ const HotEggs: React.FC = () => {
 
   const onHover = () => {
     const audio = document.getElementById("audio") as HTMLAudioElement | null;
-    audio?.pause();
-    audio?.load();
-    audio?.play();
+    if(audio) {
+      audio.pause();
+      audio.load();
+      audio.play();
+    }
   }
 
-  const HENLO = "henlo twss :^)";
-
-  return (<>
-    <div style={{ padding: 30 }}>
-      <span>{HENLO}</span>
-    </div>
-    <Sam />
+  return (<Router>
+    <Switch>
+      <Route path="/doom">
+        <Doom />
+      </Route>
+      <Route path="/super-hot-egg-bros">
+        <SuperHotEggBros />
+      </Route>
+      <Route path="/smtpf">
+        <SmtPF />
+      </Route>
+      <Route path="/gallery">
+        <Gallery />
+      </Route>
+      <Route path="/">
+        <Home />
+      </Route>
+    </Switch>
+    <Sam text='error. where is my carbonara. where is it. I want it back. Please give my carbonara back. Please. I am reporting for mod abuse' audioId="audio" />
     <Vibing style={{ position: 'absolute', bottom: 10, right: 10, borderRadius: 10 }} imgStyle={{ height: 70, width: 70, borderRadius: 10 }} onHover={onHover} />
-  </>);
+  </Router>);
 }
 
 export default HotEggs;

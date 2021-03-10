@@ -1,25 +1,32 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const herokuAnywhere = 'https://cors-anywhere.herokuapp.com/';
-const url = "https://tetyys.com/SAPI4/SAPI4?text=" + encodeURIComponent('error. where is my carbonara. where is it. I want it back. Please give my carbonara back. Please. I am reporting for mod abuse') + "&voice=" + 'Sam' + "&pitch=" + '150' + "&speed=" + '150';
 
-const Sam: React.FC = () => {
+interface SamProps {
+  text: string;
+  audioId: string;
+}
+const Sam: React.FC<SamProps> = ({ text, audioId }) => {
+  const AUDIO_ID = useRef<string>(audioId).current;
+  const SOURCE_ID = AUDIO_ID + "_source";
+
   useEffect(() => {
+    const url = "https://tetyys.com/SAPI4/SAPI4?text=" + encodeURIComponent(text) + "&voice=" + 'Sam' + "&pitch=" + '150' + "&speed=" + '150';
     fetch(url).then(wav => {
       if(wav.status !== 200) {
         wav.text().then(console.log);
       } else {
         wav.blob().then(blob => {
           const blobUrl = URL.createObjectURL(blob);
-          document.getElementById("source")?.setAttribute("src", blobUrl);
+          document.getElementById(SOURCE_ID)?.setAttribute("src", blobUrl);
         });
       }
     })
   }, []);
 
   return (
-    <audio id="audio">
-      <source id="source" type="audio/wav" />
+    <audio id={AUDIO_ID}>
+      <source id={SOURCE_ID} type="audio/wav" />
     </audio>
   );
 }
