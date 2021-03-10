@@ -14,6 +14,15 @@ const Home: React.FC = () => {
     <div style={{ margin: 30 }}>
       <Link to="super-hot-egg-bros">PLAY SHEB</Link>
     </div>
+    <div style={{ margin: 30 }}>
+      <Link to="smtpf">???</Link>
+    </div>
+    <div style={{ margin: 30 }}>
+      <Link to="gallery">The Gallery</Link>
+    </div>
+    <div style={{ margin: 30 }}>
+      <a href="https://en.wikipedia.org/wiki/QWERTY" target="_blank">If u r Error click on this link.</a>
+    </div>
   </>);
 }
 

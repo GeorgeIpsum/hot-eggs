@@ -14,6 +14,8 @@ import Sam from './components/Sam';
 import Doom from './routes/Doom';
 import Home from './routes/Home';
 import SuperHotEggBros from './routes/SuperHotEggBros';
+import SmtPF from './routes/SmtPF';
+import Gallery from './routes/Gallery';
 
 const HotEggs: React.FC = () => {
   const colorScheme = useColorScheme();
@@ -44,6 +46,12 @@ const HotEggs: React.FC = () => {
       </Route>
       <Route path="/super-hot-egg-bros">
         <SuperHotEggBros />
+      </Route>
+      <Route path="/smtpf">
+        <SmtPF />
+      </Route>
+      <Route path="/gallery">
+        <Gallery />
       </Route>
       <Route path="/">
         <Home />
