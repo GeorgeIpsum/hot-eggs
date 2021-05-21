@@ -16,6 +16,7 @@ import Home from './routes/Home';
 import SuperHotEggBros from './routes/SuperHotEggBros';
 import SmtPF from './routes/SmtPF';
 import Gallery from './routes/Gallery';
+import Tails from './routes/Tails';
 
 const HotEggs: React.FC = () => {
   const colorScheme = useColorScheme();
@@ -52,6 +53,9 @@ const HotEggs: React.FC = () => {
       </Route>
       <Route path="/gallery">
         <Gallery />
+      </Route>
+      <Route path="/tails">
+        <Tails />
       </Route>
       <Route path="/">
         <Home />
